@@ -1,4 +1,11 @@
 const { parentPort, workerData } = require('worker_threads');
-const { compute } = require('./worker-function');
+
+function compute (array) {
+    const functionArray = [];
+    for(let i = 0; i < 3000000; i++){
+        functionArray.push(i);
+    }
+    return functionArray.map((x) => (Math.random() > 0.5 ? x * 2 : x / 3));
+}
 
 parentPort.postMessage(compute(workerData));

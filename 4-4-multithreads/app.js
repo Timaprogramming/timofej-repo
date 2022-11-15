@@ -40,13 +40,13 @@ const workerFunction = (array) => {
         const worker = new Worker('./worker.js', {
             workerData : { newArray }
         });
-        const worker1 = new Worker('./worker1.js', {
+        const worker1 = new Worker('./worker.js', {
             workerData : { newArray1 }
         });
-        const worker2 = new Worker('./worker2.js', {
+        const worker2 = new Worker('./worker.js', {
             workerData : { newArray2 }
         });
-        const worker3 = new Worker('./worker3.js', {
+        const worker3 = new Worker('./worker.js', {
             workerData : { newArray3 }
         });
 
