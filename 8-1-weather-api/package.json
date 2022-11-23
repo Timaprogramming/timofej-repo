@@ -1,7 +1,7 @@
 {
-  "name": "cli-weather-demo-tim_web",
+  "name": "api-weather-demo-tim_web",
   "version": "1.0.0",
-  "description": "CLI for getting weather",
+  "description": "API for getting weather",
   "main": "weather.js",
   "bin": {
     "weather": "weather.js"

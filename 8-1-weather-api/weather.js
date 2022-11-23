@@ -39,9 +39,6 @@ const saveCity = async (city) => {
 
 const getForcast = async () => {
 	try {
-		const city = process.env.CITY ?? await getKeyValue(TOKEN_DICTIONARY.city);
-		const weather = await getWeather(city);
-		printWeather(weather, getIcon(weather.weather[0].icon));
 		app.use('/weather', weatherRouter);
 		app.listen(port, () => {
 			console.log(`Сервер запущен на http://localhost:${port}`);

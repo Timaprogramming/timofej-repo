@@ -3,6 +3,13 @@ import dedent from 'dedent-js';
 
 const printError = (error) => {
 	console.log(chalk.bgRed(' ERROR ') + ' ' + error);
+	let b = dedent`<html>
+	<body>
+			<br><font color="#ff0000">ОШИБКА: ${error}</font>
+			</body>
+			</html>
+			`
+	return b.toUpperCase();
 };
 
 const printSuccess = (message) => {
