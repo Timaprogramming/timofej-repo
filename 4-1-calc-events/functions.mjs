@@ -1,7 +1,7 @@
-const  { myEmitter } = await import('./index.mjs');
-// const { firstNum, secondNum } = await import('./index.mjs');
+const  { EventEmitter } = await import("events");
+export const myEmitter = new EventEmitter();
 
-export async function a() {
+export async function emitters() {
 	myEmitter.on("add", (a, b) => {
 		var result = a + b;
 		console.log(result);
@@ -14,7 +14,7 @@ export async function a() {
 		var result = a * b;
 		console.log(result);
 	});
-	myEmitter.on("divisilon", (a, b) => {
+	myEmitter.on("division", (a, b) => {
 		var result = a / b;
 		console.log(result);
 	});

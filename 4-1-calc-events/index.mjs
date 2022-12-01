@@ -1,5 +1,5 @@
-const  { EventEmitter } = await import("events");
-export const myEmitter = new EventEmitter();
+import { myEmitter } from './functions.mjs';
+import { emitters } from './functions.mjs';
 export let firstNum = process.argv[2];
 export let func = process.argv[3];
 export let secondNum = process.argv[4];
@@ -7,18 +7,17 @@ export let secondNum = process.argv[4];
 firstNum = Number(firstNum);
 secondNum = Number(secondNum);
 
-const { a } = await import('./functions.mjs');
-a();
+emitters();
 
-async function main(){
+function main(){
 	if(func == '+'){
-		myEmitter.emit("add", (firstNum, secondNum));
+		myEmitter.emit("add", firstNum, secondNum);
 	}else if(func == '-'){
-		myEmitter.emit("minus", (firstNum, secondNum));
+		myEmitter.emit("minus", firstNum, secondNum);
 	}else if(func == '*'){
-		myEmitter.emit("multiplication", (firstNum, secondNum));
+		myEmitter.emit("multiplication", firstNum, secondNum);
 	}else if(func == '/'){
-		myEmitter.emit("division", (firstNum, secondNum));
+		myEmitter.emit("division", firstNum, secondNum);
 	}
 	
 }
@@ -26,5 +25,5 @@ async function main(){
 try{
 	main();
 } catch(e){
-	// console.log(`error: ${err.message}`);
+	console.log(`error: ${err.message}`);
 }
