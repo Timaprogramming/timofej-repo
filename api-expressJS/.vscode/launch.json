@@ -5,10 +5,15 @@
 			"type": "node",
 			"request": "launch",
 			"name": "nodemon",
-			"runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
+			"runtimeExecutable": "nodemon",
+			"program": "${workspaceRoot}/main.js",
 			"restart": true,
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen"
 		}
 	]
 }
+
+
+
+
