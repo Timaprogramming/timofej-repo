@@ -1,11 +1,11 @@
-import express, { application, Express } from "express";
+import express, { Express } from "express";
 import { Server } from "http";
+import { inject, injectable } from "inversify";
 import { ExeptionFilter } from "./errors/exeption.filter";
 import { ILogger } from "./logger/logger.interface";
-import { LoggerService } from "./logger/logger.service";
-import { UserController } from "./users/user.controller";
-import { injectable, inject } from "inversify";
 import { TYPES } from "./types";
+import { UserController } from "./users/users.controller";
+import { json } from "body-parser";
 import "reflect-metadata";
 
 @injectable()
@@ -23,7 +23,11 @@ export class App {
 		this.port = 8000;
 	}
 
-	useRouts(): void {
+	useMiddleware(): void {
+		this.app.use(json());
+	}
+
+	useRoutes(): void {
 		this.app.use("/users", this.userController.router);
 	}
 
@@ -32,9 +36,10 @@ export class App {
 	}
 
 	public async init(): Promise<void> {
-		this.useRouts();
+		this.useMiddleware();
+		this.useRoutes();
 		this.useExeptionFilters();
 		this.server = this.app.listen(this.port);
-		this.logger.log(`Server running on http://localhost:${this.port}`);
+		this.logger.log(`Сервер запущен на http://localhost:${this.port}`);
 	}
 }
