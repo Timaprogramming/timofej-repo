@@ -1,15 +1,12 @@
 import express, { Express } from "express";
 import { Server } from "http";
 import { inject, injectable } from "inversify";
-import { ExeptionFilter } from "./errors/exeption.filter";
 import { ILogger } from "./logger/logger.interface";
 import { TYPES } from "./types";
 import { UserController } from "./users/users.controller";
 import { json } from "body-parser";
 import "reflect-metadata";
-import { ConfigService } from "./config/config.service";
 import { IConfigService } from "./config/config.service.interface";
-import { IUserController } from "./users/users.controller.interface";
 import { IExeptionFilter } from "./errors/exeption.filter.interface";
 import { PrismaService } from "./database/prisma.service";
 import { AuthMiddleware } from "./common/auth.middleware";
@@ -52,5 +49,9 @@ export class App {
 		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`The server is running on http://localhost:${this.port}`);
+	}
+
+	public close(): void {
+		this.server.close();
 	}
 }
